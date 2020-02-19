@@ -1,0 +1,27 @@
+<p class="h4">Forum</p>
+
+<div *ngIf="canManageSubforum" class="btn-group">
+  <a href="/forum/sub/new/{{ path }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-plus"></i> New Subforum
+  </a>
+</div>
+
+<div class="d-flex flex-wrap">
+  <div
+    *ngFor="let subforum of subforums"
+    class="card text-center m-1"
+    style="width: 20rem;"
+  >
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="/forum/sub/{{ subforum.alias }}/{{ path }}">
+          {{ subforum.name }}
+        </a>
+        <span class="small">({{ subforum.topicCount }})</span>
+      </h5>
+      <p class="card-text">
+        {{ subforum.snippet }}
+      </p>
+    </div>
+  </div>
+</div>

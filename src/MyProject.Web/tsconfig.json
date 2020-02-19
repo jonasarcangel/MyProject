@@ -1,0 +1,19 @@
+﻿{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"],
+    "alwaysStrict": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "allowUnreachableCode": false,
+    "lib": ["es2016", "dom"],
+    "types": ["jasmine", "node"]
+  },
+  "include": ["ClientApp"]
+}

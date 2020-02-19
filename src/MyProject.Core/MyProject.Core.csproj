@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <RestoreFallbackFolders>clear</RestoreFallbackFolders>
+  </PropertyGroup>
+
+  <!-- https://github.com/dotnet/corefx/issues/29820 -->
+  <PropertyGroup>
+    <DisablePackageAssetsCache>true</DisablePackageAssetsCache>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!--ItemGroup>
+    <ProjectReference Include="..\..\vendor\markdig\src\Markdig\Markdig.csproj">
+    <ProjectReference Include="..\..\vendor\HtmlSanitizer\src\HtmlSanitizer\HtmlSanitizer.csproj">
+  </ItemGroup -->
+
+</Project>

@@ -1,0 +1,56 @@
+<button
+  type="button"
+  mdbBtn
+  id="openModalButton-{{ id }}"
+  data-toggle="modal"
+  data-target="#basicModal"
+  (click)="basicModal.show()"
+  [hidden]="true"
+>
+  Launch
+</button>
+
+<div
+  mdbModal
+  #basicModal="mdbModal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="basicModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">{{ title }}</h4>
+      </div>
+      <div class="modal-body">
+        {{ body }}
+      </div>
+      <div class="modal-footer">
+        <button
+          id="closeModalButton-{{ id }}"
+          type="button"
+          mdbBtn
+          color="secondary"
+          class="waves-light"
+          aria-label="Close"
+          (click)="basicModal.hide()"
+          mdbWavesEffect
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="primary"
+          class="relative waves-light"
+          mdbWavesEffect
+          (click)="action()"
+        >
+          {{ button }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <RestoreFallbackFolders>clear</RestoreFallbackFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphQL" Version="2.4.0" />
+    <PackageReference Include="GraphQL.Authorization" Version="2.1.29" />
+    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="GraphQL.Server.Ui.Playground" Version="3.4.0" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Nager.PublicSuffix" Version="1.4.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" Version="1.0.0" />
+    <ProjectReference Include="..\MyProject.EntityFrameworkCore\MyProject.EntityFrameworkCore.csproj" Version="1.0.0" />
+    <ProjectReference Include="..\MyProject.Services\MyProject.Services.csproj" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

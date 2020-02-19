@@ -1,0 +1,49 @@
+<ng-container *ngIf="!isEdit">
+  <app-shell-modal
+    #deleteModal
+    id="{{ comment?.id }}"
+    title="Delete"
+    body="Are you sure you want to delete this comment?"
+    button="Delete"
+    (actioned)="deleteConfirmed()"
+  >
+  </app-shell-modal>
+  <div class="media d-block d-md-flex">
+    <img
+      class="rounded-circle"
+      width="30"
+      src="https://www.gravatar.com/avatar/{{
+        comment?.avatarHash
+      }}?size=30&d=mp"
+      alt=""
+    />
+    <div class="media-body text-md-left ml-md-3 ml-0">
+      <p class="small">
+        <a href="/profile/in/{{ comment?.username }}"
+          >@{{ comment?.username }}</a
+        >
+        {{ comment?.text }}<br />
+        <span *ngIf="comment?.userId === userId">
+          <a href="javascript:;" (click)="edit()">Edit</a>
+          &bull;
+        </span>
+        <span *ngIf="comment?.userId === userId || isAdmin">
+          <a href="javascript:;" (click)="delete()">Delete</a>
+          &bull;
+        </span>
+        {{ comment?.formattedDate() }} ({{ comment?.fromNow() }})
+      </p>
+    </div>
+  </div>
+</ng-container>
+<app-plugins-forum-comment-form
+  *ngIf="isEdit"
+  [id]="comment?.id"
+  [postId]="comment?.postId"
+  [text]="comment?.text"
+  [userId]="comment?.userId"
+  [username]="comment?.username"
+  [createdDate]="comment?.createdDate"
+  (saved)="onSave($event)"
+  (cancelled)="onCancel($event)"
+></app-plugins-forum-comment-form>

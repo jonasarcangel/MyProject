@@ -1,0 +1,93 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">
+      / <a href="/forum/{{ subforum?.sectionItems }}">forum</a> /
+      {{ subforum?.alias }}
+    </li>
+  </ol>
+</nav>
+
+<app-shell-modal
+  #deleteModal
+  id="{{ subforum?.id }}"
+  title="Delete"
+  body="Are you sure you want to delete this subforum?"
+  button="Delete"
+  (actioned)="deleteConfirmed()"
+>
+</app-shell-modal>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="ml-2">
+          <div class="h5 m-0 mb-2">{{ subforum?.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="card-text" markdown [data]="subforum?.description"></div>
+  </div>
+
+  <div class="card-footer">
+    <a
+      *ngIf="subforum?.userId === userId"
+      href="javascript:;"
+      (click)="edit()"
+      class="card-link"
+      ><i class="fas fa-pencil-alt"></i> Edit</a
+    >
+    <a
+      *ngIf="subforum?.userId === userId || isAdmin"
+      href="javascript:;"
+      (click)="delete()"
+      class="card-link"
+    >
+      <i class="fas fa-trash-alt"></i> Delete</a
+    >
+    <a href="/forum/topic/new/{{ subforum?.id }}" class="card-link"
+      ><i class="fas fa-sticky-note"></i> New Topic</a
+    >
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" colspan="2">Topic</th>
+      <th scope="col">Started</th>
+      <th scope="col">Posts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let topic of topics">
+      <td>
+        <a href="/forum/topic/{{ topic.id }}">{{ topic.title }}</a>
+      </td>
+      <td>
+        <a href="/forum/topic/{{ topic.id }}">{{ topic.snippet }}</a>
+      </td>
+      <td>
+        <a href="/forum/topic/{{ topic.id }}"
+          >{{ topic.formattedDate() }} ({{ topic.fromNow() }})</a
+        >
+      </td>
+      <td>
+        <a href="/forum/topic/{{ topic.id }}">
+          {{ topic.postCount }}
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  <button
+    *ngIf="page < totalPages"
+    type="button"
+    class="btn btn-primary btn-sm"
+    (click)="moreTopics()"
+  >
+    More topics
+  </button>
+</table>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <RestoreFallbackFolders>clear</RestoreFallbackFolders>
+    <!-- https://github.com/dotnet/corefx/issues/29820 -->
+    <DisablePackageAssetsCache>true</DisablePackageAssetsCache>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SendGrid" Version="9.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
